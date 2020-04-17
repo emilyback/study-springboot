@@ -1,6 +1,5 @@
 package com.cpst.demo.DAO;
 
-import java.util.ArrayList;
 import java.util.HashMap;
 
 import com.cpst.demo.DTO.*;
@@ -22,7 +21,8 @@ public class MemberDAO {
 		
 		member = new MemberDTO("주지훈","jjh","jjh123");
 		memberList.put("2",member);
-				
+
 		return memberList;
 	}
+	
 }
