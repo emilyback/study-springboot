@@ -22,7 +22,7 @@ public class LoginController {
 		MemberDTO loginMemberDTO = memberDAO.loginCheck(loginMember);  
 		
 		String memberName = loginMemberDTO.getName();
-		
+		memberDAO.test();
 		return memberName;
 	}
 }
