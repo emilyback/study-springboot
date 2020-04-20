@@ -1,15 +1,12 @@
 <template>
   <div id="app">
-    
-      ID: <input type="text" name="loginId" v-model="loginParam.loginId"><br/>
-      PWD: <input type="password" name="loginPwd" v-model="loginParam.loginPwd"><br/>
-      <button @click="adminCheck">log in </button>
-    
-    <div v-if="!isAdmin">
-      Fail
+    <div v-if="isMember">
+      <h2>Welcome {{memberName}}님</h2>
     </div>
     <div v-else>
-      Welcome Admin
+      ID: <input type="text" name="loginId" v-model="loginParam.loginId"><br/>
+      PWD: <input type="password" name="loginPwd" v-model="loginParam.loginPwd"><br/>
+      <button @click="login">log in </button>
     </div>
   </div>
 </template>
@@ -24,19 +21,24 @@ export default {
         loginId: '',
         loginPwd: '',
       },
-      isAdmin: false
+      isMember: false,
+      memberName: ''
     }
   },
   methods: {
-    adminCheck() {  
-      axios.post(`/api/AdminCheck`, this.loginParam).then(res => {
-        console.log('res', res)
-        if(res.data.result === "OK") 
-          this.isAdmin = true
-        else
-          alert('틀렸어!')
+    login() {  
+      axios.post(`api/LoginCheck`,this.loginParam)
+      .then(res => {
+        const loginResult = res.data.loginResult
+        if(loginResult !== null ) {
+          this.isMember = true
+          this.memberName = loginResult.name
+        }
+        else {
+          this.isMember = false
+          alert('가입하지 않은 아이디이거나, 잘못된 비밀번호입니다.')
+        }
       }).catch((ex) => {
-        console.warn('Error')
         alert('error');
       })
     }
