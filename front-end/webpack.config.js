@@ -51,7 +51,7 @@ module.exports = {
     overlay: true,
     proxy: {
       '/api/' : {
-        target: 'http://localhost:8088/back-end/',
+        target: 'http://localhost:8088/demo/',
         changeOrigin: true,
         pathRewrite: {'/api/':''}
       }
