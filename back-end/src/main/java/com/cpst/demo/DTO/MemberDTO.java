@@ -1,5 +1,8 @@
 package com.cpst.demo.DTO;
 
+import lombok.Data;
+
+@Data
 public class MemberDTO {
 
 	String name;

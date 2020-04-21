@@ -6,11 +6,12 @@ import java.util.HashMap;
 
 import org.springframework.stereotype.Repository;
 
+import com.cpst.demo.Member;
 import com.cpst.demo.DTO.*;
 
 
 @Repository
-public class MemberDAO {
+public class MemberDAO implements Member{
 	
 	MemberDTO member;
 	HashMap<String,MemberDTO> memberList = new HashMap<String, MemberDTO>();
